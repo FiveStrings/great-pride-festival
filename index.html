@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Great Pride Festival 2025 | AC Pride</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink:        #FF1493;
+      --pink-light:  #FFB6C1;
+      --pink-glow:   rgba(255, 20, 147, 0.35);
+      --purple-dark: #1a0a2e;
+      --lavender:    #f5f0ff;
+      --rainbow:     linear-gradient(90deg, #FF0018 0%, #FF7A00 20%, #FFD700 40%, #00B300 60%, #0066FF 80%, #8B00FF 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--purple-dark);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-display { font-family: 'Pacifico', cursive; }
+
+    section[id] { scroll-margin-top: 76px; }
+
+    /* ── Rainbow stripe ── */
+    .rainbow-stripe {
+      height: 6px;
+      background: var(--rainbow);
+      width: 100%;
+    }
+
+    /* ── Section heading ── */
+    .section-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      display: inline-block;
+      margin-bottom: 0.25rem;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      height: 5px;
+      border-radius: 99px;
+      background: var(--rainbow);
+      margin-top: 0.4rem;
+    }
+
+    /* ── Navbar ── */
+    #mainNav {
+      background: transparent;
+      transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+      padding: 1rem 0;
+    }
+    #mainNav.scrolled {
+      background: var(--purple-dark) !important;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      border-bottom: 3px solid;
+      border-image: var(--rainbow) 1;
+    }
+    .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.6rem;
+      color: var(--pink) !important;
+      text-shadow: 0 0 18px var(--pink-glow);
+    }
+    .navbar-nav .nav-link {
+      color: rgba(255,255,255,0.85) !important;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.5rem 0.85rem !important;
+      transition: color 0.2s;
+    }
+    .navbar-nav .nav-link:hover { color: var(--pink) !important; }
+    .navbar-toggler { border-color: rgba(255,255,255,0.3); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ── Shared button styles ── */
+    .btn-brand {
+      background: var(--pink);
+      color: white;
+      border: none;
+      border-radius: 99px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px var(--pink-glow);
+      display: inline-block;
+    }
+    .btn-brand:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 36px var(--pink-glow);
+      color: white;
+    }
+    .btn-outline-brand {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 99px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline-brand:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+      transform: translateY(-2px);
+    }
+    .btn-brand-sm { padding: 0.45rem 1.2rem; font-size: 0.85rem; }
+    .btn-brand-lg { padding: 1rem 2.5rem; font-size: 1.1rem; }
+
+    /* ── Hero ── */
+    #hero {
+      background: var(--purple-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 1.5rem 5rem;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 550px; height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #8B00FF 0%, transparent 70%);
+      top: -150px; left: -150px;
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #FF1493 0%, transparent 70%);
+      bottom: -120px; right: -120px;
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+      color: var(--pink);
+      text-shadow: 0 0 16px var(--pink-glow);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(3.2rem, 9vw, 7.5rem);
+      line-height: 1.05;
+      color: white;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: var(--rainbow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-meta {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.8);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 2.5rem;
+    }
+    .hero-meta .sep { color: var(--pink); margin: 0 0.75rem; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.35);
+      font-size: 1.5rem;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── About ── */
+    #about { background: white; padding: 6rem 0; }
+    .detail-card {
+      background: var(--lavender);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      text-align: center;
+      height: 100%;
+      transition: transform 0.2s;
+    }
+    .detail-card:hover { transform: translateY(-4px); }
+    .detail-card .icon { font-size: 2.2rem; margin-bottom: 0.6rem; }
+    .detail-card .label {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--pink);
+      margin-bottom: 0.25rem;
+    }
+    .detail-card .value { font-size: 1rem; font-weight: 700; }
+
+    /* ── Schedule ── */
+    #schedule { background: var(--lavender); padding: 6rem 0; }
+
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 4px;
+      border-radius: 99px;
+      background: var(--rainbow);
+      transform: translateX(-50%);
+    }
+    @media (max-width: 767px) {
+      .timeline::before { left: 20px; }
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 2.25rem);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 2.25rem);
+    }
+    @media (max-width: 767px) {
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-right: 0;
+        padding-left: 52px;
+      }
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 1.1rem;
+      transform: translateX(-50%);
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--pink);
+      border: 3px solid white;
+      box-shadow: 0 0 12px var(--pink-glow);
+      z-index: 1;
+    }
+    @media (max-width: 767px) {
+      .timeline-dot { left: 20px; }
+    }
+
+    .timeline-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.1rem 1.4rem;
+      max-width: 420px;
+      box-shadow: 0 4px 20px rgba(26,10,46,0.08);
+    }
+    .timeline-time {
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--pink);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-event {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--purple-dark);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-desc { font-size: 0.88rem; color: #666; margin: 0; }
+
+    /* ── Sponsors ── */
+    #sponsors { background: white; padding: 6rem 0; }
+    .tier-label {
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--pink);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .sponsor-slot {
+      border: 2.5px dashed #ddd0ef;
+      border-radius: 1rem;
+      background: var(--lavender);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #b09fc7;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .sponsor-slot:hover { border-color: var(--pink); background: #fff0f8; }
+    .sponsor-slot.presenting { height: 160px; font-size: 1rem; }
+    .sponsor-slot.gold      { height: 110px; }
+    .sponsor-slot.silver    { height: 85px;  font-size: 0.8rem; }
+    .sponsor-slot.community { height: 70px;  font-size: 0.75rem; }
+
+    /* ── Gallery ── */
+    #photos { background: var(--purple-dark); padding: 6rem 0; }
+    #photos .section-title { color: white; }
+    #photos .section-title::after { }
+    #photos .lead { color: rgba(255,255,255,0.65); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.625rem;
+    }
+    @media (max-width: 575px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .gallery-item {
+      border-radius: 0.75rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.07); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,10,46,0.55), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 0.75rem;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* ── Volunteer / Get Involved ── */
+    #volunteer { background: var(--lavender); padding: 6rem 0; }
+    .form-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(26,10,46,0.1);
+    }
+    .form-label { font-weight: 700; font-size: 0.9rem; }
+    .form-control, .form-select { border-color: #ddd0ef; }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 0.2rem rgba(255,20,147,0.15);
+    }
+    .form-check-input:checked {
+      background-color: var(--pink);
+      border-color: var(--pink);
+    }
+    .btn-submit {
+      background: var(--pink);
+      color: white;
+      border: none;
+      border-radius: 99px;
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px var(--pink-glow);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px var(--pink-glow);
+      color: white;
+    }
+    .zeffy-card {
+      background: linear-gradient(145deg, #2d1052, #1a0a2e);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      color: white;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .zeffy-card p { color: rgba(255,255,255,0.75); }
+
+    /* ── Footer ── */
+    footer {
+      background: #0e0519;
+      color: rgba(255,255,255,0.6);
+      padding: 3.5rem 0 1.5rem;
+    }
+    .footer-brand {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: var(--pink);
+      text-shadow: 0 0 20px var(--pink-glow);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .social-link {
+      color: rgba(255,255,255,0.45);
+      font-size: 1.4rem;
+      margin: 0 0.4rem;
+      display: inline-block;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .social-link:hover { color: var(--pink); transform: translateY(-2px); }
+    .footer-link {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--pink); }
+    footer hr { border-color: rgba(255,255,255,0.08); }
+    footer .copyright { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">AC Pride</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#photos">Photos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#volunteer">Volunteer</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <!-- TODO: Replace href with your Zeffy event URL -->
+            <a href="#" class="btn-brand btn-brand-sm">
+              <i class="bi bi-ticket-perforated me-1"></i>Get Tickets
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-content text-center px-3">
+      <div class="hero-eyebrow">AC Pride Presents</div>
+      <h1 class="hero-title">
+        <span class="gradient-text">Great Pride</span><br>Festival
+      </h1>
+      <div class="hero-meta">
+        <i class="bi bi-calendar3"></i>&nbsp;Saturday, June 28, 2025
+        <span class="sep">•</span>
+        <i class="bi bi-geo-alt"></i>&nbsp;Atlantic City, NJ
+        <br class="d-sm-none">
+        <span class="sep d-none d-sm-inline">•</span>
+        <i class="bi bi-clock"></i>&nbsp;12 PM – 10 PM
+      </div>
+      <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+        <!-- TODO: Replace href with your Zeffy event URL -->
+        <a href="#" class="btn-brand btn-brand-lg">
+          <i class="bi bi-ticket-perforated me-2"></i>Get Tickets
+        </a>
+        <a href="#volunteer" class="btn-outline-brand btn-brand-lg">
+          <i class="bi bi-heart me-2"></i>Volunteer
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll"><i class="bi bi-chevron-down"></i></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">About the Festival</h2>
+        <p class="lead mt-3" style="max-width:680px;margin:auto;color:#5a4a7a;">
+          Join us for AC Pride's biggest celebration of the year — a full day of live music,
+          drag performances, community, food, art, and pure joy right here in Atlantic City.
+          All are welcome. Come as you are.
+        </p>
+      </div>
+      <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-3">
+          <div class="detail-card">
+            <div class="icon">📅</div>
+            <div class="label">Date</div>
+            <div class="value">Saturday<br>June 28, 2025</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="detail-card">
+            <div class="icon">🕛</div>
+            <div class="label">Time</div>
+            <div class="value">12:00 PM<br>– 10:00 PM</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="detail-card">
+            <div class="icon">📍</div>
+            <div class="label">Location</div>
+            <div class="value">Gardner's Basin<br>Atlantic City, NJ</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="detail-card">
+            <div class="icon">🎟️</div>
+            <div class="label">Admission</div>
+            <div class="value">General Admission<br>&amp; VIP Available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rainbow-stripe"></div>
+
+  <!-- ═══════════════════════════════════════════
+       RUN OF SHOW
+  ═══════════════════════════════════════════ -->
+  <section id="schedule">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Run of Show</h2>
+        <p class="mt-3" style="color:#5a4a7a;">Here's what's happening throughout the day.</p>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">12:00 PM</div>
+            <div class="timeline-event">🎉 Gates Open</div>
+            <p class="timeline-desc">Welcome to the Great Pride Festival! Pick up your wristband and explore the grounds.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">1:00 PM</div>
+            <div class="timeline-event">🎤 Opening Ceremony</div>
+            <p class="timeline-desc">Welcome remarks from AC Pride leadership and honored community guests.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">2:00 PM</div>
+            <div class="timeline-event">🎵 Live Performance</div>
+            <p class="timeline-desc">Kick off the afternoon with a live set from our featured artist — announcement coming soon!</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">3:30 PM</div>
+            <div class="timeline-event">🌈 Community Showcase</div>
+            <p class="timeline-desc">Spotlighting local LGBTQIA+ artists, vendors, and community organizations.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">5:00 PM</div>
+            <div class="timeline-event">🎶 Headliner Set</div>
+            <p class="timeline-desc">Our headliner takes the main stage. You won't want to miss this.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">7:00 PM</div>
+            <div class="timeline-event">👑 Drag Extravaganza</div>
+            <p class="timeline-desc">A spectacular drag showcase featuring Atlantic City's most dazzling performers.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-time">9:00 PM</div>
+            <div class="timeline-event">✨ Closing Celebration</div>
+            <p class="timeline-desc">Dance the night away as we close out another unforgettable Pride Festival.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="rainbow-stripe"></div>
+
+  <!-- ═══════════════════════════════════════════
+       SPONSORS
+  ═══════════════════════════════════════════ -->
+  <section id="sponsors">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Sponsors</h2>
+        <p class="mt-3" style="color:#5a4a7a;">This event wouldn't be possible without our incredible community partners.</p>
+      </div>
+
+      <!-- Presenting -->
+      <div class="mb-5">
+        <div class="tier-label">🌟 Presenting Sponsor</div>
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6">
+            <div class="sponsor-slot presenting">
+              <div>
+                <div style="font-size:2rem;margin-bottom:0.4rem;">🏳️‍🌈</div>
+                <div>Your Logo Here</div>
+                <div style="font-size:0.75rem;opacity:0.6;margin-top:0.2rem;">Presenting Sponsor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gold -->
+      <div class="mb-5">
+        <div class="tier-label">🥇 Gold Sponsors</div>
+        <div class="row g-3 justify-content-center">
+          <div class="col-6 col-md-4"><div class="sponsor-slot gold">Logo Placeholder</div></div>
+          <div class="col-6 col-md-4"><div class="sponsor-slot gold">Logo Placeholder</div></div>
+        </div>
+      </div>
+
+      <!-- Silver -->
+      <div class="mb-5">
+        <div class="tier-label">🥈 Silver Sponsors</div>
+        <div class="row g-3 justify-content-center">
+          <div class="col-6 col-sm-4 col-md-3"><div class="sponsor-slot silver">Logo Placeholder</div></div>
+          <div class="col-6 col-sm-4 col-md-3"><div class="sponsor-slot silver">Logo Placeholder</div></div>
+          <div class="col-6 col-sm-4 col-md-3"><div class="sponsor-slot silver">Logo Placeholder</div></div>
+        </div>
+      </div>
+
+      <!-- Community -->
+      <div class="mb-5">
+        <div class="tier-label">🤝 Community Partners</div>
+        <div class="row g-2 justify-content-center">
+          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
+          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
+          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
+          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p style="color:#5a4a7a;font-size:0.95rem;">Interested in sponsoring the Great Pride Festival?</p>
+        <a href="mailto:info@acpride.org"
+           style="border:2px solid var(--pink);color:var(--pink);border-radius:99px;padding:0.6rem 1.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;font-size:0.85rem;text-decoration:none;display:inline-block;transition:background 0.2s,color 0.2s;"
+           onmouseover="this.style.background='var(--pink)';this.style.color='white'"
+           onmouseout="this.style.background='transparent';this.style.color='var(--pink)'">
+          <i class="bi bi-envelope me-2"></i>Become a Sponsor
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="rainbow-stripe"></div>
+
+  <!-- ═══════════════════════════════════════════
+       PHOTO GALLERY
+  ═══════════════════════════════════════════ -->
+  <section id="photos">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Last Year's Highlights</h2>
+        <p class="lead mt-3">Relive the magic from Pride 2024.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item tall">
+          <img src="https://placehold.co/600x900/8B00FF/ffffff?text=Pride+2024" alt="Pride 2024" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x430/FF1493/ffffff?text=Live+Music" alt="Live Music" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x430/FF7A00/ffffff?text=Community" alt="Community" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x430/FFD700/1a0a2e?text=Performers" alt="Performers" loading="lazy" />
+        </div>
+        <div class="gallery-item tall">
+          <img src="https://placehold.co/600x900/0066FF/ffffff?text=Drag+Show" alt="Drag Show" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x430/00B300/ffffff?text=Crowd" alt="Crowd" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://placehold.co/600x430/FF1493/ffffff?text=Celebration" alt="Celebration" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rainbow-stripe"></div>
+
+  <!-- ═══════════════════════════════════════════
+       VOLUNTEER / GET INVOLVED
+  ═══════════════════════════════════════════ -->
+  <section id="volunteer">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Get Involved</h2>
+        <p class="mt-3" style="color:#5a4a7a;max-width:600px;margin:auto;">
+          Want to help make this event incredible? Sign up to volunteer — or grab your tickets below.
+        </p>
+      </div>
+      <div class="row g-4 align-items-stretch">
+
+        <!-- Form -->
+        <div class="col-lg-8">
+          <div class="form-card">
+            <h3 style="font-size:1.5rem;margin-bottom:1.5rem;">Volunteer Sign-Up</h3>
+            <form id="volunteerForm" novalidate>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label class="form-label" for="firstName">First Name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="Jane" required />
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label" for="lastName">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Doe" required />
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label" for="email">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="jane@example.com" required />
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label" for="phone">Phone <span style="font-weight:400;opacity:.6">(optional)</span></label>
+                  <input type="tel" class="form-control" id="phone" placeholder="(555) 123-4567" />
+                </div>
+                <div class="col-12">
+                  <label class="form-label d-block mb-2">Areas of Interest</label>
+                  <div class="row g-2">
+                    <div class="col-6 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chk-setup" />
+                        <label class="form-check-label" for="chk-setup">Setup / Teardown</label>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chk-reg" />
+                        <label class="form-check-label" for="chk-reg">Registration</label>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chk-ent" />
+                        <label class="form-check-label" for="chk-ent">Entertainment</label>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chk-info" />
+                        <label class="form-check-label" for="chk-info">Info Booth</label>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chk-photo" />
+                        <label class="form-check-label" for="chk-photo">Photography</label>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chk-other" />
+                        <label class="form-check-label" for="chk-other">Other</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="message">Anything else we should know?</label>
+                  <textarea class="form-control" id="message" rows="3"
+                    placeholder="Your availability, any special skills, questions..."></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-submit" id="submitBtn">
+                    <i class="bi bi-heart-fill me-2"></i>Submit Volunteer Interest
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Zeffy sidebar -->
+        <div class="col-lg-4">
+          <div class="zeffy-card">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">🎟️</div>
+            <h3 style="font-family:'Pacifico',cursive;font-size:1.8rem;color:white;margin-bottom:0.75rem;">
+              Get Your Tickets
+            </h3>
+            <p>Secure your spot at the Great Pride Festival. General Admission and VIP packages available.</p>
+            <!-- TODO: Replace href with your Zeffy event URL -->
+            <a href="#" class="btn-brand btn-brand-lg d-block w-100 mb-3">
+              <i class="bi bi-ticket-perforated me-2"></i>Buy on Zeffy
+            </a>
+            <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin:0;">
+              Powered by Zeffy — 100% of proceeds go to AC Pride.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-md-4">
+          <span class="footer-brand">AC Pride</span>
+          <p style="font-size:0.88rem;color:rgba(255,255,255,0.45);max-width:280px;">
+            Creating a safer, more joyful world for our LGBTQIA+ family in Atlantic City and beyond.
+          </p>
+          <div class="mt-3">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div style="font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;">Festival</div>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="#about"     class="footer-link">About</a></li>
+            <li class="mb-1"><a href="#schedule"  class="footer-link">Schedule</a></li>
+            <li class="mb-1"><a href="#sponsors"  class="footer-link">Sponsors</a></li>
+            <li class="mb-1"><a href="#photos"    class="footer-link">Photos</a></li>
+            <li class="mb-1"><a href="#volunteer" class="footer-link">Volunteer</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <div style="font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;">AC Pride</div>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="https://acpride.org"        class="footer-link">acpride.org</a></li>
+            <li class="mb-1"><a href="https://acpride.org/events" class="footer-link">All Events</a></li>
+            <li class="mb-1"><a href="mailto:info@acpride.org"    class="footer-link">Contact Us</a></li>
+            <li class="mb-1"><a href="#"                          class="footer-link">Donate</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <div style="font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;">Ready to Celebrate?</div>
+          <!-- TODO: Replace href with your Zeffy event URL -->
+          <a href="#" class="btn-brand btn-brand-sm d-inline-block mb-3">Get Tickets</a>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;">
+            <i class="bi bi-geo-alt me-1"></i>Atlantic City, NJ
+          </p>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin:0;">
+            <i class="bi bi-envelope me-1"></i>
+            <a href="mailto:info@acpride.org" class="footer-link">info@acpride.org</a>
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="copyright mb-0">&copy; 2025 AC Pride. All rights reserved.</p>
+        <p class="copyright mb-0">Made with 🏳️‍🌈 for the LGBTQIA+ community.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('mainNav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Close mobile nav on link click
+    document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById('navMenu');
+        const bsc = bootstrap.Collapse.getInstance(menu);
+        if (bsc) bsc.hide();
+      });
+    });
+
+    // Volunteer form — placeholder success state
+    document.getElementById('volunteerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Thanks! We\'ll be in touch soon.';
+      btn.style.background = '#00a650';
+      btn.style.boxShadow = '0 4px 20px rgba(0,166,80,0.4)';
+      btn.disabled = true;
+    });
+  </script>
+</body>
+</html>
