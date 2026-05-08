@@ -332,10 +332,35 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .sponsor-slot:hover { border-color: var(--pink); background: #fff0f8; }
-    .sponsor-slot.presenting { height: 160px; font-size: 1rem; }
-    .sponsor-slot.gold      { height: 110px; }
-    .sponsor-slot.silver    { height: 85px;  font-size: 0.8rem; }
-    .sponsor-slot.community { height: 70px;  font-size: 0.75rem; }
+    .sponsor-slot.presenting { min-height: 160px; font-size: 1rem; }
+    .sponsor-slot.gold      { min-height: 110px; }
+    .sponsor-slot.silver    { min-height: 85px;  font-size: 0.8rem; }
+    .sponsor-slot.community { min-height: 70px;  font-size: 0.75rem; }
+    .sponsor-logo-img {
+      max-width: 100%;
+      max-height: 80px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+    .sponsor-opp-card {
+      background: var(--lavender);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      text-align: center;
+      border-top: 4px solid var(--pink);
+      height: 100%;
+    }
+    .sponsor-opp-name { font-weight: 900; font-size: 1rem; margin-bottom: 0.35rem; }
+    .sponsor-opp-price {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.4rem;
+      color: var(--pink);
+      margin-bottom: 0.35rem;
+    }
+    .sponsor-opp-perks { font-size: 0.82rem; color: #5a4a7a; }
 
     /* ── Gallery ── */
     #photos { background: var(--purple-dark); padding: 6rem 0; }
@@ -485,9 +510,8 @@
           <li class="nav-item"><a class="nav-link" href="#photos">Photos</a></li>
           <li class="nav-item"><a class="nav-link" href="#volunteer">Volunteer</a></li>
           <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-            <!-- TODO: Replace href with your Zeffy event URL -->
-            <a href="#" class="btn-brand btn-brand-sm">
-              <i class="bi bi-ticket-perforated me-1"></i>Get Tickets
+            <a href="https://www.zeffy.com/en-US/ticketing/atlantic-citys-great-pride-festival" class="btn-brand btn-brand-sm">
+              <i class="bi bi-star-fill me-1"></i>Become a Sponsor
             </a>
           </li>
         </ul>
@@ -500,12 +524,12 @@
   ═══════════════════════════════════════════ -->
   <section id="hero">
     <div class="hero-content text-center px-3">
-      <img src="images/ac-pride-logo.png" alt="AC Pride"
-           style="width:330px;height:330px;object-fit:contain;border-radius:50%;margin-bottom:1.25rem;box-shadow:0 0 40px var(--pink-glow);" />
       <div class="hero-eyebrow">AC Pride Presents</div>
-      <h1 class="hero-title">
-        <span class="gradient-text">Great Pride</span><br>Festival
-      </h1>
+      <img src="images/great-pride-logo.png" alt="AC Pride"
+           style="width:600px;height:600px;object-fit:contain;border-radius:50%;margin-bottom:1.25rem;box-shadow:0 0 40px var(--pink-glow);" />
+      <!-- <h1 class="hero-title"> -->
+        <!-- <span class="gradient-text">Great Pride</span><br>Festival -->
+      <!-- </h1> -->
       <div class="hero-meta">
         <i class="bi bi-calendar3"></i>&nbsp;Saturday, June 28, 2025
         <span class="sep">•</span>
@@ -515,9 +539,8 @@
         <i class="bi bi-clock"></i>&nbsp;12 PM – 10 PM
       </div>
       <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-        <!-- TODO: Replace href with your Zeffy event URL -->
-        <a href="#" class="btn-brand btn-brand-lg">
-          <i class="bi bi-ticket-perforated me-2"></i>Get Tickets
+        <a href="https://www.zeffy.com/en-US/ticketing/atlantic-citys-great-pride-festival" class="btn-brand btn-brand-lg">
+          <i class="bi bi-star-fill me-2"></i>Become a Sponsor
         </a>
         <a href="#volunteer" class="btn-outline-brand btn-brand-lg">
           <i class="bi bi-heart me-2"></i>Volunteer
@@ -545,28 +568,28 @@
           <div class="detail-card">
             <div class="icon">📅</div>
             <div class="label">Date</div>
-            <div class="value">Saturday<br>June 28, 2025</div>
+            <div class="value">Saturday<br>June 20, 2026</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="detail-card">
             <div class="icon">🕛</div>
             <div class="label">Time</div>
-            <div class="value">12:00 PM<br>– 10:00 PM</div>
+            <div class="value">12:30 PM<br>– 6:00 PM</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="detail-card">
             <div class="icon">📍</div>
             <div class="label">Location</div>
-            <div class="value">Gardner's Basin<br>Atlantic City, NJ</div>
+            <div class="value">O'Donnell Park<br>Atlantic City, NJ</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="detail-card">
-            <div class="icon">🎟️</div>
+            <div class="icon">🎉</div>
             <div class="label">Admission</div>
-            <div class="value">General Admission<br>&amp; VIP Available</div>
+            <div class="value">Free &amp; Open<br>to the Public</div>
           </div>
         </div>
       </div>
@@ -665,59 +688,65 @@
         <p class="mt-3" style="color:#5a4a7a;">This event wouldn't be possible without our incredible community partners.</p>
       </div>
 
-      <!-- Presenting -->
-      <div class="mb-5">
-        <div class="tier-label">🌟 Presenting Sponsor</div>
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-6">
-            <div class="sponsor-slot presenting">
-              <div>
-                <div style="font-size:2rem;margin-bottom:0.4rem;">🏳️‍🌈</div>
-                <div>Your Logo Here</div>
-                <div style="font-size:0.75rem;opacity:0.6;margin-top:0.2rem;">Presenting Sponsor</div>
-              </div>
-            </div>
+      <!-- Current sponsors -->
+      <div class="row g-4 justify-content-center mb-5">
+        <div class="col-10 col-sm-6 col-md-4">
+          <div class="tier-label">✨ Glitter Sponsor</div>
+          <div class="sponsor-slot gold p-4">
+            <a href="https://www.visitatlanticcity.com" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:100%;">
+              <img src="images/sponsors/visit-ac.svg" alt="Visit Atlantic City" class="sponsor-logo-img" height="80" />
+            </a>
+          </div>
+        </div>
+        <div class="col-10 col-sm-6 col-md-4">
+          <div class="tier-label">⭐ Sparkle Sponsor</div>
+          <div class="sponsor-slot silver p-4" style="background:var(--purple-dark);border-color:rgba(255,255,255,0.12);">
+            <a href="https://www.stockton.edu" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:100%;">
+              <img src="images/sponsors/stockton.png" alt="Stockton University" class="sponsor-logo-img" />
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- Gold -->
-      <div class="mb-5">
-        <div class="tier-label">🥇 Gold Sponsors</div>
-        <div class="row g-3 justify-content-center">
-          <div class="col-6 col-md-4"><div class="sponsor-slot gold">Logo Placeholder</div></div>
-          <div class="col-6 col-md-4"><div class="sponsor-slot gold">Logo Placeholder</div></div>
-        </div>
+      <!-- Sponsorship opportunities -->
+      <div class="text-center mb-3">
+        <h3 style="font-family:'Pacifico',cursive;font-size:1.4rem;color:var(--purple-dark);">Sponsorship Opportunities</h3>
+        <p style="color:#5a4a7a;font-size:0.9rem;">All sponsor packages include logo placement, booth space, and VIP hospitality tent access.</p>
       </div>
-
-      <!-- Silver -->
-      <div class="mb-5">
-        <div class="tier-label">🥈 Silver Sponsors</div>
-        <div class="row g-3 justify-content-center">
-          <div class="col-6 col-sm-4 col-md-3"><div class="sponsor-slot silver">Logo Placeholder</div></div>
-          <div class="col-6 col-sm-4 col-md-3"><div class="sponsor-slot silver">Logo Placeholder</div></div>
-          <div class="col-6 col-sm-4 col-md-3"><div class="sponsor-slot silver">Logo Placeholder</div></div>
+      <div class="row g-3 justify-content-center mb-5">
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="sponsor-opp-card">
+            <div class="sponsor-opp-name">🌈 Rainbow</div>
+            <div class="sponsor-opp-price">$10,000</div>
+            <div class="sponsor-opp-perks">10 VIP passes · premium logo placement · social media feature</div>
+          </div>
         </div>
-      </div>
-
-      <!-- Community -->
-      <div class="mb-5">
-        <div class="tier-label">🤝 Community Partners</div>
-        <div class="row g-2 justify-content-center">
-          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
-          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
-          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
-          <div class="col-6 col-sm-3 col-md-2"><div class="sponsor-slot community">Partner</div></div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="sponsor-opp-card">
+            <div class="sponsor-opp-name">✨ Glitter</div>
+            <div class="sponsor-opp-price">$5,000</div>
+            <div class="sponsor-opp-perks">6 VIP passes · logo on all materials · social media promotion</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="sponsor-opp-card">
+            <div class="sponsor-opp-name">💫 Fabulous</div>
+            <div class="sponsor-opp-price">$2,500</div>
+            <div class="sponsor-opp-perks">4 VIP passes · logo on event signage · social media shoutout</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="sponsor-opp-card">
+            <div class="sponsor-opp-name">⭐ Sparkle</div>
+            <div class="sponsor-opp-price">$1,000</div>
+            <div class="sponsor-opp-perks">4 VIP passes · logo on event signage · booth space</div>
+          </div>
         </div>
       </div>
 
       <div class="text-center">
-        <p style="color:#5a4a7a;font-size:0.95rem;">Interested in sponsoring the Great Pride Festival?</p>
-        <a href="mailto:info@acpride.org"
-           style="border:2px solid var(--pink);color:var(--pink);border-radius:99px;padding:0.6rem 1.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;font-size:0.85rem;text-decoration:none;display:inline-block;transition:background 0.2s,color 0.2s;"
-           onmouseover="this.style.background='var(--pink)';this.style.color='white'"
-           onmouseout="this.style.background='transparent';this.style.color='var(--pink)'">
-          <i class="bi bi-envelope me-2"></i>Become a Sponsor
+        <a href="https://www.zeffy.com/en-US/ticketing/atlantic-citys-great-pride-festival" class="btn-brand btn-brand-lg">
+          <i class="bi bi-star-fill me-2"></i>Become a Sponsor
         </a>
       </div>
     </div>
@@ -810,7 +839,7 @@
       <div class="text-center mb-5">
         <h2 class="section-title">Get Involved</h2>
         <p class="mt-3" style="color:#5a4a7a;max-width:600px;margin:auto;">
-          Want to help make this event incredible? Sign up to volunteer — or grab your tickets below.
+          Want to help make this event incredible? Sign up to volunteer — or become a sponsor below.
         </p>
       </div>
       <div class="row g-4 align-items-stretch">
@@ -896,14 +925,13 @@
         <!-- Zeffy sidebar -->
         <div class="col-lg-4">
           <div class="zeffy-card">
-            <div style="font-size:3.5rem;margin-bottom:1rem;">🎟️</div>
+            <div style="font-size:3.5rem;margin-bottom:1rem;">🌈</div>
             <h3 style="font-family:'Pacifico',cursive;font-size:1.8rem;color:white;margin-bottom:0.75rem;">
-              Get Your Tickets
+              Become a Sponsor
             </h3>
-            <p>Secure your spot at the Great Pride Festival. General Admission and VIP packages available.</p>
-            <!-- TODO: Replace href with your Zeffy event URL -->
-            <a href="#" class="btn-brand btn-brand-lg d-block w-100 mb-3">
-              <i class="bi bi-ticket-perforated me-2"></i>Buy on Zeffy
+            <p>Support the Great Pride Festival and show Atlantic City your pride. Packages from $1,000 to $10,000.</p>
+            <a href="https://www.zeffy.com/en-US/ticketing/atlantic-citys-great-pride-festival" class="btn-brand btn-brand-lg d-block w-100 mb-3">
+              <i class="bi bi-star-fill me-2"></i>Sponsor on Zeffy
             </a>
             <p style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin:0;">
               Powered by Zeffy — 100% of proceeds go to AC Pride.
@@ -954,9 +982,8 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <div style="font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;">Ready to Celebrate?</div>
-          <!-- TODO: Replace href with your Zeffy event URL -->
-          <a href="#" class="btn-brand btn-brand-sm d-inline-block mb-3">Get Tickets</a>
+          <div style="font-size:0.7rem;font-weight:900;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;">Support the Festival</div>
+          <a href="https://www.zeffy.com/en-US/ticketing/atlantic-citys-great-pride-festival" class="btn-brand btn-brand-sm d-inline-block mb-3">Become a Sponsor</a>
           <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;">
             <i class="bi bi-geo-alt me-1"></i>Atlantic City, NJ
           </p>

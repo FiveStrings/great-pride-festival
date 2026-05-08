@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:acpride.org)"
+      "WebFetch(domain:acpride.org)",
+      "WebFetch(domain:www.zeffy.com)"
     ]
   }
 }
