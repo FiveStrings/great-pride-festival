@@ -862,60 +862,64 @@
         <div class="col-lg-8">
           <div class="form-card">
             <h3 style="font-size:1.5rem;margin-bottom:1.5rem;">Volunteer Sign-Up</h3>
-            <form id="volunteerForm" novalidate>
+            <form id="volunteerForm" novalidate action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="ce3ad8f6-61d8-4457-be37-88cd10fed17a">
               <div class="row g-3">
                 <div class="col-sm-6">
                   <label class="form-label" for="firstName">First Name</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="Jane" required />
+                  <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Jane" required />
+                  <div class="invalid-feedback">Please enter your first name.</div>
                 </div>
                 <div class="col-sm-6">
                   <label class="form-label" for="lastName">Last Name</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="Doe" required />
+                  <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Doe" required />
+                  <div class="invalid-feedback">Please enter your last name.</div>
                 </div>
                 <div class="col-sm-6">
                   <label class="form-label" for="email">Email Address</label>
-                  <input type="email" class="form-control" id="email" placeholder="jane@example.com" required />
+                  <input type="email" class="form-control" id="email" name="email" placeholder="jane@example.com" required />
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
                 <div class="col-sm-6">
                   <label class="form-label" for="phone">Phone <span style="font-weight:400;opacity:.6">(optional)</span></label>
-                  <input type="tel" class="form-control" id="phone" placeholder="(555) 123-4567" />
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="(555) 123-4567" />
                 </div>
                 <div class="col-12">
                   <label class="form-label d-block mb-2">Areas of Interest</label>
                   <div class="row g-2">
                     <div class="col-6 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chk-setup" />
+                        <input class="form-check-input" type="checkbox" id="chk-setup" name="interest_setup" value="Setup / Teardown" />
                         <label class="form-check-label" for="chk-setup">Setup / Teardown</label>
                       </div>
                     </div>
                     <div class="col-6 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chk-reg" />
+                        <input class="form-check-input" type="checkbox" id="chk-reg" name="interest_registration" value="Registration" />
                         <label class="form-check-label" for="chk-reg">Registration</label>
                       </div>
                     </div>
                     <div class="col-6 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chk-ent" />
+                        <input class="form-check-input" type="checkbox" id="chk-ent" name="interest_entertainment" value="Entertainment" />
                         <label class="form-check-label" for="chk-ent">Entertainment</label>
                       </div>
                     </div>
                     <div class="col-6 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chk-info" />
+                        <input class="form-check-input" type="checkbox" id="chk-info" name="interest_info_booth" value="Info Booth" />
                         <label class="form-check-label" for="chk-info">Info Booth</label>
                       </div>
                     </div>
                     <div class="col-6 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chk-photo" />
+                        <input class="form-check-input" type="checkbox" id="chk-photo" name="interest_photography" value="Photography" />
                         <label class="form-check-label" for="chk-photo">Photography</label>
                       </div>
                     </div>
                     <div class="col-6 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chk-other" />
+                        <input class="form-check-input" type="checkbox" id="chk-other" name="interest_other" value="Other" />
                         <label class="form-check-label" for="chk-other">Other</label>
                       </div>
                     </div>
@@ -923,15 +927,18 @@
                 </div>
                 <div class="col-12">
                   <label class="form-label" for="message">Anything else we should know?</label>
-                  <textarea class="form-control" id="message" rows="3"
+                  <textarea class="form-control" id="message" name="message" rows="3"
                     placeholder="Your availability, any special skills, questions..."></textarea>
+                </div>
+                <div class="col-12">
+                  <div class="h-captcha" data-captcha="true"></div>
                 </div>
                 <div class="col-12">
                   <button type="submit" class="btn-submit" id="submitBtn">
                     <i class="bi bi-heart-fill me-2"></i>Submit Volunteer Interest
                   </button>
                 </div>
-              </div>
+              </div>              
             </form>
           </div>
         </div>
@@ -1078,15 +1085,50 @@
       });
     });
 
-    // Volunteer form — placeholder success state
-    document.getElementById('volunteerForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      btn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Thanks! We\'ll be in touch soon.';
-      btn.style.background = '#00a650';
-      btn.style.boxShadow = '0 4px 20px rgba(0,166,80,0.4)';
-      btn.disabled = true;
-    });
+    // Volunteer form — AJAX submission with validation
+    (function () {
+      const form    = document.getElementById('volunteerForm');
+      const btn     = document.getElementById('submitBtn');
+      const btnHtml = btn.innerHTML;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        form.classList.add('was-validated');
+        if (!form.checkValidity()) return;
+
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting…';
+
+        try {
+          const res  = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          const data = await res.json();
+          if (data.success) {
+            form.closest('.form-card').innerHTML = `
+              <div class="text-center py-5">
+                <div style="font-size:4rem;margin-bottom:1rem;">🎉</div>
+                <h3 style="font-family:'Newton';font-size:1.75rem;color:var(--purple-dark);margin-bottom:0.75rem;">You're In!</h3>
+                <p style="color:#5a4a7a;font-size:1rem;max-width:400px;margin:auto;">
+                  Thanks for signing up to volunteer at the Great Pride Festival!
+                  We'll be in touch soon with all the details.
+                </p>
+              </div>`;
+          } else {
+            throw new Error(data.message || 'Submission failed');
+          }
+        } catch {
+          btn.disabled = false;
+          btn.innerHTML = btnHtml;
+          const alert = document.createElement('div');
+          alert.className = 'alert alert-danger rounded-3 mt-3';
+          alert.setAttribute('role', 'alert');
+          alert.innerHTML = '<i class="bi bi-exclamation-circle-fill me-2"></i>Something went wrong. Please try again or email <a href="mailto:info@acpride.org" class="alert-link">info@acpride.org</a>.';
+          btn.insertAdjacentElement('afterend', alert);
+          setTimeout(() => alert.remove(), 7000);
+        }
+      });
+    })();
+
   </script>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
