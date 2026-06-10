@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:acpride.org)",
       "WebFetch(domain:www.zeffy.com)",
-      "Bash(npm --version)"
+      "Bash(npm --version)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\chris\\\\github\\\\great-pride-festival\" -Force)"
     ]
   }
 }
